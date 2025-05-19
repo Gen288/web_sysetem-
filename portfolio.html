@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio - Genesis Diaz</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+    <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">🌙</button>
+    <header>
+        <nav class="menu" id="main-menu">
+            <button class="menu-btn" id="menu-btn" aria-label="Toggle navigation" aria-expanded="false" aria-controls="menu-list">
+                <span class="menu-icon"></span>
+            </button>
+            <ul id="menu-list">
+                <li><a href="Home.html">HOME</a></li>
+                <li class="active"><a href="portfolio.html" class="active">PORTFOLIO</a></li>
+                <li><a href="Resume.html">RESUME</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section class="portfolio-hero">
+            <div class="max-width">
+                <h1 class="portfolio-title">My Portfolio</h1>
+                <p class="portfolio-subtitle">A selection of my favorite projects and work.</p>
+            </div>
+        </section>
+        <section class="portfolio-grid-section">
+            <div class="portfolio-grid max-width">
+                <!-- Portfolio Item 1 -->
+                <div class="portfolio-card">
+                    <img src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=400&q=80" alt="Project 1" class="portfolio-img">
+                    <div class="portfolio-card-body">
+                        <h3 class="portfolio-card-title">Personal Website</h3>
+                        <p class="portfolio-card-desc">A modern responsive website to showcase my skills, resume, and contact information.</p>
+                        <a href="#" class="portfolio-link" target="_blank">View Project</a>
+                    </div>
+                </div>
+                <!-- Portfolio Item 2 -->
+                <div class="portfolio-card">
+                    <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=400&q=80" alt="Project 2" class="portfolio-img">
+                    <div class="portfolio-card-body">
+                        <h3 class="portfolio-card-title">E-Commerce App</h3>
+                        <p class="portfolio-card-desc">A full-stack e-commerce application with user authentication, product management, and payment integration.</p>
+                        <a href="#" class="portfolio-link" target="_blank">View Project</a>
+                    </div>
+                </div>
+                <!-- Portfolio Item 3 -->
+                <div class="portfolio-card">
+                    <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=400&q=80" alt="Project 3" class="portfolio-img">
+                    <div class="portfolio-card-body">
+                        <h3 class="portfolio-card-title">Portfolio Gallery</h3>
+                        <p class="portfolio-card-desc">A gallery web app to display and filter creative works, built with modern JavaScript frameworks.</p>
+                        <a href="#" class="portfolio-link" target="_blank">View Project</a>
+                    </div>
+                </div>
+                <!-- Portfolio Item 4 -->
+                <div class="portfolio-card">
+                    <img src="https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=400&q=80" alt="Project 4" class="portfolio-img">
+                    <div class="portfolio-card-body">
+                        <h3 class="portfolio-card-title">Task Manager</h3>
+                        <p class="portfolio-card-desc">A productivity tool for managing daily tasks, deadlines, and priorities with a clean UI.</p>
+                        <a href="#" class="portfolio-link" target="_blank">View Project</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <span>Created By <a href="https://www.codingnepalweb.com">CodingNepal</a> | <span class="far fa-copyright"></span> 2020 All rights reserved.</span>
+    </footer>
+    <script>
+      const toggleBtn = document.getElementById('theme-toggle');
+      function setDarkModeUI(isDark) {
+        document.body.classList.toggle('dark-mode', isDark);
+        toggleBtn.textContent = isDark ? '☀️' : '🌙';
+        toggleBtn.setAttribute('aria-pressed', isDark ? 'true' : 'false');
+        toggleBtn.title = isDark ? 'Switch to light mode' : 'Switch to dark mode';
+      }
+      if (toggleBtn) {
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        const savedTheme = localStorage.getItem('theme');
+        const isDark = savedTheme === 'dark' || (!savedTheme && prefersDark);
+        setDarkModeUI(isDark);
+        toggleBtn.addEventListener('click', () => {
+          const currentlyDark = document.body.classList.contains('dark-mode');
+          setDarkModeUI(!currentlyDark);
+          localStorage.setItem('theme', !currentlyDark ? 'dark' : 'light');
+        });
+      }
+      // Responsive menu toggle
+      const menuBtn = document.getElementById('menu-btn');
+      const menuList = document.getElementById('menu-list');
+      if (menuBtn && menuList) {
+        menuBtn.addEventListener('click', function() {
+          menuList.classList.toggle('show');
+          menuBtn.setAttribute('aria-expanded', menuList.classList.contains('show'));
+        });
+      }
+    </script>
+</body>
+</html>
